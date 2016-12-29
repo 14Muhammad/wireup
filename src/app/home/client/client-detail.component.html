@@ -1,0 +1,13 @@
+<h2>Clients</h2>
+<div *ngIf="client">
+  <h3>"{{client.name}}"</h3>
+  <div>
+    <label>Id: </label>{{client.id}}</div>
+  <div>
+    <label>Name: </label>
+    <input [(ngModel)]="client.name" placeholder="name"/>
+  </div>
+  <p>
+    <button (click)="gotoClients()">Back</button>
+  </p>
+</div>

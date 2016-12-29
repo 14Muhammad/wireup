@@ -1,0 +1,144 @@
+<div class="animated slideInRight">
+    <md-card>
+        <md-card-header>
+            <img md-card-avatar src="./assets/images/user.png">
+            <md-card-title> {{user?.firstName | uppercase}} {{user?.lastName | uppercase}} </md-card-title>
+            <md-card-subtitle> <span class="label label-primary"> {{user?.role }} Admin </span> </md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+            <md-grid-list cols="4" [style.background]="'white'" rowHeight="80px">
+                <md-grid-tile>
+                    <h1>{{projects}}</h1>
+                    <span> {{'Open Projects' | uppercase}} </span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <h1>6</h1>
+                    <span> {{'Projects Completed' | uppercase}} </span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <h1>{{hours}}</h1>
+                    <span> {{'Total Hours Worked' | uppercase}} </span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <h1>35</h1>
+                    <span> {{'Total Project Hours' | uppercase}} </span>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-facebook fa-fw"></i>
+                </a>
+            </button>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-twitter fa-fw"></i>
+                </a>
+            </button>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-github fa-fw"></i>
+                </a>
+            </button>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-linkedin fa-fw"></i>
+                </a>
+            </button>
+        </md-card-actions>
+    </md-card>
+
+    <br>
+    <form [formGroup]="userForm" novalidate autocomplete="off" (ngSubmit)="updateUser()">
+        <md-tab-group>
+            <md-tab>
+                <template md-tab-label>
+                    <i class='fa fa-info fa-lg fa-fw'></i>General Info
+                </template>
+                <br><br>
+                <table width="99%" cellspacing="0"><tr>
+                    <td><md-input placeholder="First Name" formControlName="firstName"></md-input></td>
+                    <td><md-input placeholder="Last Name" formControlName="lastName"></md-input></td>
+                </tr></table>
+                <md-input placeholder="Mailing Address" formControlName="mailingAddress"></md-input><br>
+                <md-input placeholder="Alternative Address" formControlName="altMailingAddress"></md-input><br>
+                <table width="99%" cellspacing="0"><tr>
+                    <td><md-input placeholder="Phone" formControlName="phone"></md-input></td>
+                    <td><md-input placeholder="Alternative Phone" formControlName="altPhone"></md-input></td>
+                </tr></table>
+                <md-input placeholder="Skype" formControlName="skypeId"></md-input><br>
+                <md-input placeholder="Date of Birth" formControlName="dob"></md-input><br>
+                <md-input placeholder="SSN" formControlName="ssn"></md-input><br><br>
+                <button md-raised-button color="primary" type="submit" (click)="updateUser()">Save</button>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>
+                    <i class="fa fa-link fa-lg fa-fw"></i> Social Links
+                </template>
+                <br><br>
+                <md-input placeholder="Facebook" formControlName="facebook"></md-input><br>
+                <md-input placeholder="Linkedin" formControlName="linkedin"></md-input><br>
+                <md-input placeholder="Twitter" formControlName="twitter"></md-input><br>
+                <md-input placeholder="Github" formControlName="github"></md-input><br>
+                <md-input placeholder="Youtube" formControlName="youtube"></md-input><br>
+                <button md-raised-button color="primary" type="submit" (click)="updateUser()">Save</button>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>
+                    <i class="fa fa-user fa-lg fa-fw"></i> Account Settings
+                </template>
+                <template md-tab-content>
+                    <p>Some more tab content</p>
+                    <p>...</p>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>
+                    <i class="fa fa-briefcase fa-lg fa-fw"></i> Job Info
+                </template>
+                <template md-tab-content>
+                    <h1>Some more tab content</h1>
+                    <p>...</p>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>
+                    <i class="fa fa-th-large fa-lg fa-fw"></i> Projects
+                </template>
+                <template md-tab-content>
+                    <h1>Some more tab content</h1>
+                    <p>...</p>
+                </template>
+            </md-tab>
+
+            <md-tab>
+                <template md-tab-label>
+                    <i class="fa fa-clock-o fa-lg fa-fw"></i> Time Cards
+                </template>
+                <template md-tab-content>
+                    <p>Some tab content</p>
+                    <p>...</p>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>
+                    <i class="fa fa-bed fa-lg fa-fw"></i> Leave
+                </template>
+                <template md-tab-content>
+                    <p>Some tab content</p>
+                    <p>...</p>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>
+                    <i class="fa fa-money fa-lg fa-fw"></i> Expense
+                </template>
+                <template md-tab-content>
+                    <p>Some tab content</p>
+                    <p>...</p>
+                </template>
+            </md-tab>
+        </md-tab-group>
+    </form>
+</div>

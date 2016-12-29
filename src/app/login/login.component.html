@@ -1,0 +1,36 @@
+<div class="col-lg-5 col-md-6 col-sm-8 col-xs-12 col-centered">
+  <md-card>
+    <md-toolbar color="primary">Login</md-toolbar>
+    <md-card-content><br>
+      <alert *ngFor="let alert of alerts;let i = index"
+             [type]="alert.type"
+             [dismissOnTimeout]="alert.dismissOnTimeout"
+             dismissible="true"
+             (close)="closeAlert(i)">
+        <i [class]="alert.msgIcon"></i> {{ alert?.msg }}
+      </alert>
+      <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
+        <md-input type="text" placeholder="Email"  autocomplete="off"
+                  formControlName="email" maxlength="100" #email>
+          <span md-prefix><i class="fa fa-envelope-o" [ngStyle]="{'color': iconColorTheme}"></i></span>
+          <md-hint *ngIf="!loginForm.controls['email'].valid && !loginForm.controls['email'].pristine &&
+                    (!loginForm.controls['email'].hasError('required') && loginForm.controls['email'].hasError('pattern'))"
+                   [ngStyle]="{'color': 'red'}" align="start">Please enter a valid email address.</md-hint>
+          <md-hint *ngIf="!loginForm.controls['email'].valid && !loginForm.controls['email'].pristine &&
+                    loginForm.controls['email'].hasError('required')"
+                   [ngStyle]="{'color': 'red'}" align="start">Email is required.</md-hint>
+        </md-input><br><br>
+        <md-input type="password" placeholder="Password"  autocomplete="off"
+                  formControlName="password" maxlength="100" #password>
+          <span md-prefix><i class="fa fa-key" [ngStyle]="{'color': iconColorTheme}"></i></span>
+          <md-hint *ngIf="!loginForm.controls['password'].valid && !loginForm.controls['password'].pristine &&
+                    loginForm.controls['password'].hasError('required')"
+                   [ngStyle]="{'color': 'red'}" align="start">Password is required.</md-hint>
+        </md-input><br><br>
+        <button md-raised-button color="primary" [disabled]="!loginForm.valid" type="submit"> let's wireup </button>
+        <button md-button color="primary" (click)="goToResetPassword()" type="button">Forgot Password?</button>
+      </form>
+      <br> You don't have an account? <a style="cursor: pointer; cursor: hand;" (click)="goToSignup()" >Sign up</a>
+    </md-card-content>
+  </md-card>
+</div>

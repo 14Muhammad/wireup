@@ -1,0 +1,65 @@
+<!--<ion-card *ngIf="timer">
+  <ion-item class="no-bottom-border item">
+    <button ion-button *ngIf="timeInSeconds && timeInSeconds > 0" large full clear class="timer-button timer-text">{{timer.displayTime}}</button>
+  </ion-item>
+  <ion-item class="no-bottom-border" *ngIf="timeInSeconds && timeInSeconds > 0">
+    <button ion-button icon-left clear color="danger" small (click)="initTimer()" item-left *ngIf="!timer.runTimer && (timer.hasStarted || timer.hasFinished) || timer.hasFinished">
+      <ion-icon name="refresh"></ion-icon>
+      Reset
+    </button>
+    <button ion-button icon-left clear small color="primary" (click)="pauseTimer()" item-right *ngIf="timer.runTimer && timer.hasStarted && !timer.hasFinished">
+      <ion-icon name="pause"></ion-icon>
+      Pause
+    </button>
+    <button ion-button icon-left clear small color="primary" (click)="resumeTimer()" item-right *ngIf="!timer.runTimer && timer.hasStarted && !timer.hasFinished">
+      <ion-icon name="play"></ion-icon>
+      Resume
+    </button>
+    <button ion-button icon-left clear small color="primary" (click)="startTimer()" item-right *ngIf="!timer.hasStarted">
+      <ion-icon name="play"></ion-icon>
+      Start
+    </button>
+  </ion-item>
+</ion-card>-->
+
+<md-card *ngIf="timer" color="primary">
+  <md-card-title-group>
+    <i class="fa fa-clock-o fa-5x"></i>
+    <md-card-title *ngIf="timeInSeconds && timeInSeconds > 0">{{timer.displayTime}}</md-card-title>
+    <md-card-subtitle>
+      {{(!timer.runTimer && timer.hasStarted && !timer.hasFinished)?
+      "You are currently clocked out":
+      "Clock started at : " + clockStartedHoursAndMinutes}}
+    </md-card-subtitle>
+  </md-card-title-group>
+  <md-card-content>
+    <md-list dense>
+      <md-list-item *ngFor="let obj of timerNoticeBoard"> {{obj.message}} </md-list-item>
+    </md-list>
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button
+            (click)="initTimer()"
+            color="warn"
+            *ngIf="!timer.runTimer && (timer.hasStarted || timer.hasFinished) || timer.hasFinished">
+      Reset
+    </button>
+    <button md-raised-button
+            color="primary"
+            (click)="pauseTimer()"
+            *ngIf="timer.runTimer && timer.hasStarted && !timer.hasFinished">
+      Pause
+    </button>
+    <button md-raised-button
+            color="primary"
+            (click)="resumeTimer()"
+            *ngIf="!timer.runTimer && timer.hasStarted && !timer.hasFinished">
+      Resume
+    </button>
+  <button md-raised-button
+          color="primary"
+          (click)="startTimer()" *ngIf="!timer.hasStarted">
+    Start
+    </button>
+  </md-card-actions>
+</md-card>

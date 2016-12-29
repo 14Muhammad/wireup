@@ -1,0 +1,184 @@
+<div id="card" class="col-lg-5 col-md-6 col-sm-8 col-xs-12 col-centered">
+  <dx-toast   [message]="toast.msg"
+              [type]="toast.type"
+              [displayTime]="toast.time"
+              [(visible)]="toast.visible"></dx-toast>
+  <md-card>
+    <md-toolbar color="primary">Register</md-toolbar>
+    <md-card-content><br>
+      <div class="container-fluid">
+        <form [formGroup]="signUpForm" novalidate (ngSubmit)="onSubmit()">
+          <div formGroupName="generalInfo">
+            <div class="row">
+              <div class="col-md-6">
+                <md-input type="text" placeholder="First Name"  autocomplete="off"
+                          formControlName="firstName">
+                  <md-hint *ngIf="!signUpForm.controls['generalInfo'].controls['firstName'].valid &&
+            !signUpForm.controls['generalInfo'].controls['firstName'].pristine &&
+                    signUpForm.controls['generalInfo'].controls['firstName'].hasError('required')"
+                           [ngStyle]="{'color': 'red'}" align="start">First name is required.</md-hint>
+                </md-input>
+              </div>
+              <div class="col-md-6">
+                <md-input type="text" placeholder="Last Name"  autocomplete="off"
+                          formControlName="lastName">
+                  <md-hint *ngIf="!signUpForm.controls['generalInfo'].controls['lastName'].valid &&
+            !signUpForm.controls['generalInfo'].controls['lastName'].pristine &&
+                    signUpForm.controls['generalInfo'].controls['lastName'].hasError('required')"
+                           [ngStyle]="{'color': 'red'}" align="start">Last name is required.</md-hint>
+                </md-input>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div formGroupName="companyInfo">
+                <md-input type="text" placeholder="Company Name" autocomplete="off" floatingPlaceholder="false"
+                          formControlName="companyName">
+                  <span md-prefix><i class="fa fa-briefcase" [ngStyle]="{'color': iconColorTheme}"></i></span>
+                  <md-hint *ngIf="!signUpForm.controls['companyInfo'].controls['companyName'].valid &&
+            !signUpForm.controls['companyInfo'].controls['companyName'].pristine &&
+                    signUpForm.controls['companyInfo'].controls['companyName'].hasError('required')"
+                           [ngStyle]="{'color': 'red'}" align="start">Company name is required.</md-hint>
+                </md-input>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div formGroupName="accountInfo">
+                <md-input type="text" placeholder="Email" autocomplete="off" floatingPlaceholder="false"
+                          formControlName="email">
+                  <span md-prefix><i class="fa fa-envelope-o" [ngStyle]="{'color': iconColorTheme}"></i></span>
+
+                  <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['email'].valid &&
+                  !signUpForm.controls['accountInfo'].controls['email'].pristine &&
+                    (!signUpForm.controls['accountInfo'].controls['email'].hasError('required') &&
+                    !signUpForm.controls['accountInfo'].controls['email'].hasError('pattern')
+                    && signUpForm.controls['accountInfo'].controls['email'].hasError('isEmailExists'))"
+                           [ngStyle]="{'color': 'red'}" align="start">Email is already taken.</md-hint>
+
+                  <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['email'].valid &&
+                  !signUpForm.controls['accountInfo'].controls['email'].pristine &&
+                    (!signUpForm.controls['accountInfo'].controls['email'].hasError('required')
+                    && signUpForm.controls['accountInfo'].controls['email'].hasError('pattern'))"
+                           [ngStyle]="{'color': 'red'}" align="start">Please enter a valid email address.</md-hint>
+
+                  <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['email'].valid &&
+            !signUpForm.controls['accountInfo'].controls['email'].pristine &&
+                    signUpForm.controls['accountInfo'].controls['email'].hasError('required')"
+                           [ngStyle]="{'color': 'red'}" align="start">Email is required.</md-hint>
+                </md-input>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div formGroupName="accountInfo">
+                <md-input type="text" placeholder="Username" autocomplete="off"
+                          maxlength="30"
+                          floatingPlaceholder="false"
+                          #username
+                          formControlName="userName">
+                  <span md-prefix><i class="fa fa-user-o" [ngStyle]="{'color': iconColorTheme}"></i></span>
+                  <md-hint align="end">{{username.value.length}} / 30</md-hint>
+
+                  <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['userName'].valid &&
+                  !signUpForm.controls['accountInfo'].controls['userName'].pristine &&
+                    (!signUpForm.controls['accountInfo'].controls['userName'].hasError('required') &&
+                    !signUpForm.controls['accountInfo'].controls['userName'].hasError('minlength') &&
+                    !signUpForm.controls['accountInfo'].controls['userName'].hasError('maxlength') &&
+                    !signUpForm.controls['accountInfo'].controls['userName'].hasError('pattern')
+                    && signUpForm.controls['accountInfo'].controls['userName'].hasError('isUsernameExists'))"
+                           [ngStyle]="{'color': 'red'}" align="start">Username is already taken.</md-hint>
+
+                  <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['userName'].valid &&
+                  !signUpForm.controls['accountInfo'].controls['userName'].pristine &&
+                    (!signUpForm.controls['accountInfo'].controls['userName'].hasError('required')
+                    && (signUpForm.controls['accountInfo'].controls['userName'].hasError('pattern')||
+                    signUpForm.controls['accountInfo'].controls['userName'].hasError('minlength') ||
+                    signUpForm.controls['accountInfo'].controls['userName'].hasError('maxlength')))"
+                           [ngStyle]="{'color': 'red'}" align="start">
+                    Only alphanumerics between 3 - 30 </md-hint>
+
+                  <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['userName'].valid &&
+            !signUpForm.controls['accountInfo'].controls['userName'].pristine &&
+                    signUpForm.controls['accountInfo'].controls['userName'].hasError('required')"
+                           [ngStyle]="{'color': 'red'}" align="start">Username is required.</md-hint>
+                </md-input>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div formGroupName="accountInfo">
+                <div formGroupName="passwords">
+                  <md-input type="password" placeholder="Password" autocomplete="off"
+                            minlength="6"
+                            floatingPlaceholder="false"
+                            #password
+                            formControlName="password">
+                    <span md-prefix><i class="fa fa-key" [ngStyle]="{'color': iconColorTheme}"></i></span>
+                    <md-hint align="end">{{password.value.length}}</md-hint>
+
+                    <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].valid &&
+            !signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].pristine &&
+                    (!signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].hasError('required')&&
+                    signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].hasError('minlength'))"
+                             [ngStyle]="{'color': 'red'}" align="start">Please enter at least 6 characters.</md-hint>
+
+                    <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].valid &&
+            !signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].pristine &&
+                    signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].hasError('required')"
+                             [ngStyle]="{'color': 'red'}" align="start">Password is required.</md-hint>
+                  </md-input>
+
+                  <md-input type="password" placeholder="Retype Password" autocomplete="off"
+                            minlength="6"
+                            floatingPlaceholder="false"
+                            #confirmPassword
+                            formControlName="confirmPassword">
+                    <span md-prefix><i [ngClass]="{'fa': true ,'fa-unlock':!signUpForm.controls['accountInfo'].controls['passwords'].valid,
+                     'fa-lock':signUpForm.controls['accountInfo'].controls['passwords'].valid }" [ngStyle]="{'color': iconColorTheme}"></i></span>
+
+                    <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].valid &&
+            !signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].pristine &&
+                    (!signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].hasError('required')&&
+                    !signUpForm.controls['accountInfo'].controls['passwords'].valid)"
+                             [ngStyle]="{'color': 'red'}" align="start">Please enter the same value again.</md-hint>
+
+
+                    <md-hint *ngIf="!signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].valid &&
+            !signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].pristine &&
+                    signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].hasError('required')"
+                             [ngStyle]="{'color': 'red'}" align="start">Retype Password is required.</md-hint>
+                  </md-input>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div formGroupName="generalInfo"><br>
+                <md-radio-group formControlName="gender">
+                  <md-radio-button *ngFor="let g of genders" [value]="g">
+                    {{g | initCaps}}
+                  </md-radio-button>
+                </md-radio-group>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-sm-6">
+              <button md-raised-button color="primary" [disabled]="!signUpForm.valid" type="submit"> Sign up </button>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <button md-button color="primary" (click)="goToResetPassword()" type="button">Forgot Password?</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br> Already have an account? <a style="cursor: pointer; cursor: hand;" (click)="goToLogin()" >Login</a>
+    </md-card-content>
+  </md-card>
+</div>

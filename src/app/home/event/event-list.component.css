@@ -1,0 +1,26 @@
+/*
+dx-data-grid{
+    max-height: 100px;
+}
+*/
+
+
+.options {
+         margin-top: 25px;
+       }
+.options > div {
+         margin-right: 20px;
+       }
+.options > h4,
+.view-type {
+         margin-bottom: 10px;
+       }
+.view-type > span{
+         position: relative;
+         top: 2px;
+         margin-right: 10px;
+       }
+.view-type > div {
+         display: inline-block;
+         vertical-align: middle;
+       }

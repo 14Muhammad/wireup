@@ -1,0 +1,43 @@
+<md-toolbar [color]="toolbarTheme">
+  Users
+</md-toolbar>
+<!--<div class="row" style="margin: 10px 0px;">
+    <dx-toolbar [dataSource]="[
+        { location: 'before', locateInMenu: 'never', widget: 'dxButton',
+            options: { icon: 'refresh', text:'Refresh', type:'success' }
+        },{ location: 'before', locateInMenu: 'never', widget: 'dxButton',
+            options: { icon: 'preferences', text: 'Settings' }
+        }]">
+    </dx-toolbar>
+</div>-->
+<div class="row" style="margin: 10px 0px;">
+    <dx-data-grid [dataSource]="users"
+                  [columns]="dxDataGird.columns"
+                  [columnHidingEnabled]="dxDataGird.columnHidingEnabled"
+                  [columnFixing]="dxDataGird.columnFixing"
+                  [allowColumnResizing]="dxDataGird.allowColumnResizing"
+                  [hoverStateEnabled]="dxDataGird.hoverStateEnabled"
+                  [allowColumnReordering]="dxDataGird.allowColumnReordering"
+                  [rowAlternationEnabled]="dxDataGird.rowAlternationEnabled"
+                  [searchPanel]="dxDataGird.searchPanel"
+                  [paging]="dxDataGird.paging"
+                  [pager]="dxDataGird.pager"
+                  [selection]="dxDataGird.selection"
+                  [editing]="dxDataGird.editing"
+                  [export]="dxDataGird.export"
+                  [groupPanel]="dxDataGird.groupPanel"
+                  [filterRow]="dxDataGird.filterRow"
+                  (onEditingStart)="dxDataGird.onEditingStart($event)"
+                  (onRowPrepared)="dxDataGird.onRowPrepared($event)"
+                  (onRowInserting)="dxDataGird.onRowInserting($event)"
+                  (onRowInserted)="dxDataGird.onRowInserted($event)"
+                  (onRowUpdating)="dxDataGird.onRowUpdating($event)"
+                  (onRowUpdated)="dxDataGird.onRowUpdated($event)"
+                  (onRowRemoving)="dxDataGird.onRowRemoving($event)"
+                  (onRowRemoved)="dxDataGird.onRowRemoved($event)"
+                  (onCellPrepared)="dxDataGird.onCellPrepared($event)"
+                  (onContextMenuPreparing)="dxDataGird.onContextMenuPreparing($event)"
+                  (onDataErrorOccurred)="dxDataGird.onDataErrorOccurred($event)"
+                  (onContentReady)="dxDataGird.onContentReady($event)">
+    </dx-data-grid>
+</div>

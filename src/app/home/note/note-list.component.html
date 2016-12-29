@@ -1,0 +1,33 @@
+<md-toolbar [color]="toolbarTheme">
+  Notes
+</md-toolbar>
+<dx-data-grid [dataSource]="notes"
+              [columns]="dxDataGird.columns"
+              [columnHidingEnabled]="dxDataGird.columnHidingEnabled"
+              [columnFixing]="dxDataGird.columnFixing"
+              [allowColumnResizing]="dxDataGird.allowColumnResizing"
+              [hoverStateEnabled]="dxDataGird.hoverStateEnabled"
+              [allowColumnReordering]="dxDataGird.allowColumnReordering"
+              [rowAlternationEnabled]="dxDataGird.rowAlternationEnabled"
+              [searchPanel]="dxDataGird.searchPanel"
+              [paging]="dxDataGird.paging"
+              [pager]="dxDataGird.pager"
+              [selection]="dxDataGird.selection"
+              [editing]="dxDataGird.editing"
+              [export]="dxDataGird.export"
+              [groupPanel]="dxDataGird.groupPanel"
+              [filterRow]="dxDataGird.filterRow"
+              (onEditingStart)="dxDataGird.onEditingStart($event)"
+              (onRowPrepared)="dxDataGird.onRowPrepared($event)"
+              (onRowInserting)="dxDataGird.onRowInserting($event)"
+              (onRowInserted)="dxDataGird.onRowInserted($event)"
+              (onRowUpdating)="dxDataGird.onRowUpdating($event)"
+              (onRowUpdated)="dxDataGird.onRowUpdated($event)"
+              (onRowRemoving)="dxDataGird.onRowRemoving($event)"
+              (onRowRemoved)="dxDataGird.onRowRemoved($event)"
+              (onCellPrepared)="dxDataGird.onCellPrepared($event)"
+              (onContextMenuPreparing)="dxDataGird.onContextMenuPreparing($event)"
+              (onDataErrorOccurred)="dxDataGird.onDataErrorOccurred($event)"
+              (onContentReady)="dxDataGird.onContentReady($event)">
+</dx-data-grid>
+

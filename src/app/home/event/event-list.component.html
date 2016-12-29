@@ -1,0 +1,47 @@
+<md-toolbar [color]="toolbarTheme">
+  Events
+</md-toolbar>
+<dx-scheduler
+  [dataSource]="appointmentsData"
+  [views]='["agenda", "month", "week", "workWeek", "day"]'
+  currentView="workWeek"
+  [firstDayOfWeek]="0"
+  [startDayHour]="8"
+  [endDayHour]="19"
+  [currentDate]="currentDate"
+  [useDropDownViewSwitcher]="switchModeNames[0]"
+  width="100%"
+  [height]="600">
+  <dxi-resource
+    field="ownerId"
+    label="Owner"
+    [allowMultiple]="true"
+    [dataSource]="resourcesData"
+  ></dxi-resource>
+  <dxo-editing #editingOptions
+               [allowAdding]="true"
+               [allowUpdating]="true"
+               [allowDeleting]="true"
+               [allowResizing]="true"
+               [allowDragging]="true"
+  ></dxo-editing>
+</dx-scheduler>
+<!--<div class="options">
+  <h4>Editing Options</h4>
+  <dx-check-box text="Allow adding" [(value)]="editingOptions.allowAdding"></dx-check-box>
+  <dx-check-box text="Allow updating" [(value)]="editingOptions.allowUpdating"></dx-check-box>
+  <dx-check-box text="Allow deleting" [(value)]="editingOptions.allowDeleting"></dx-check-box>
+  <dx-check-box text="Allow resizing" [(value)]="editingOptions.allowResizing"></dx-check-box>
+  <dx-check-box text="Allow dragging" [(value)]="editingOptions.allowDragging"></dx-check-box>
+</div>-->
+<!--    <dx-scheduler
+            [dataSource]="dxScheduler.dataSource"
+            [views]="dxScheduler.views"
+            [currentView]="dxScheduler.currentView"
+            [currentDate]="dxScheduler.currentDate"
+            [firstDayOfWeek]="dxScheduler.firstDayOfWeek"
+            [startDayHour]="dxScheduler.startDayHour"
+            [endDayHour]="dxScheduler.endDayHour"
+            [height]="600">
+    </dx-scheduler>-->
+

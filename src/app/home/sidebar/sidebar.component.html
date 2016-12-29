@@ -1,0 +1,12 @@
+<button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">
+    &#9776;
+</button>
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <ul class="list-group">
+        <a *ngFor="let item of sidebarItems" [routerLink]="['/' + item.route]"
+           routerLinkActive="active"
+           class="{{item.class}}">
+            <i class="fa fa-fw fa-{{item.icon}}"></i> {{item.name | ellipses:12 | uppercase}}
+        </a>
+    </ul>
+</nav>
