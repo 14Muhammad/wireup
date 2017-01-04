@@ -27,7 +27,7 @@
     <i class="fa fa-clock-o fa-5x"></i>
     <md-card-title *ngIf="timeInSeconds && timeInSeconds > 0">{{timer.displayTime}}</md-card-title>
     <md-card-subtitle>
-      {{(!timer.runTimer && timer.hasStarted && !timer.hasFinished)?
+      {{(!timer.runTimer && timer.hasStarted && !timer.hasFinished) || !timer.hasStarted ?
       "You are currently clocked out":
       "Clock started at : " + clockStartedHoursAndMinutes}}
     </md-card-subtitle>

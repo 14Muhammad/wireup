@@ -1,6 +1,26 @@
-<header-component></header-component>
-<sidebar-component></sidebar-component>
-<!--<h1>Home</h1>-->
-<section class="main-container" [ngClass]="{sidebarPushRight: isActive}">
+<md-toolbar [color]="toolbarTheme">
+  <button md-button (click)="sidenav.toggle()">
+    <md-icon>menu</md-icon>
+  </button>
+  <button md-button [routerLink]="['/dashboard']">WIRE UP</button>
+  <span class="fill-remaining-space"></span>
+  <button md-button [mdMenuTriggerFor]="menu"><md-icon>more_vert</md-icon></button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item (click)="goToProfile(loggedUserName)">
+      <md-icon>account_box</md-icon> Profile</button>
+    <button md-menu-item (click)="logout()">
+      <md-icon>power_settings_new</md-icon> Log Out</button>
+  </md-menu>
+</md-toolbar>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="push" opened="false">
+    <md-nav-list>
+      <a md-list-item *ngFor="let item of sidebarItems" [routerLink]="['/' + item.route]" routerLinkActive="active">
+          <i class="fa fa-fw fa-{{item.icon}}"></i> {{ item.name | ellipses:12 | initCaps }}
+      </a>
+    </md-nav-list>
+  </md-sidenav>
+  <section class="main-container-wrapper">
     <router-outlet></router-outlet>
-</section>
+  </section>
+</md-sidenav-container>

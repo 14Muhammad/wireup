@@ -10,6 +10,7 @@ import {HttpModule} from "@angular/http";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {DevExtremeModule} from "devextreme-angular2";
 import {MaterialRootModule} from "@angular/material";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   imports:      [ CommonModule ],
@@ -29,6 +30,7 @@ import {MaterialRootModule} from "@angular/material";
     /* 3rd party Modules */
     DevExtremeModule,
     MaterialRootModule,
+    FlexLayoutModule,
     Ng2BootstrapModule
   ]
 })
